@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "name": "Équipe 1",
+    "colorName": "Rouge",
+    "color": "#BE2323",
+    "onColor": "#FFFFFF",
+    "startCp": 1,
+    "offsetMin": 0,
+    "route": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Équipe 2",
+    "colorName": "Bleu",
+    "color": "#1E5AB4",
+    "onColor": "#FFFFFF",
+    "startCp": 2,
+    "offsetMin": 0,
+    "route": [
+      2,
+      3,
+      4,
+      5,
+      1
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Équipe 3",
+    "colorName": "Vert",
+    "color": "#238C3C",
+    "onColor": "#FFFFFF",
+    "startCp": 3,
+    "offsetMin": 0,
+    "route": [
+      3,
+      4,
+      5,
+      1,
+      2
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Équipe 4",
+    "colorName": "Jaune",
+    "color": "#E0A800",
+    "onColor": "#341E0E",
+    "startCp": 4,
+    "offsetMin": 0,
+    "route": [
+      4,
+      5,
+      1,
+      2,
+      3
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Équipe 5",
+    "colorName": "Orange",
+    "color": "#E16E14",
+    "onColor": "#FFFFFF",
+    "startCp": 5,
+    "offsetMin": 0,
+    "route": [
+      5,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Équipe 6",
+    "colorName": "Violet",
+    "color": "#7832A0",
+    "onColor": "#FFFFFF",
+    "startCp": 1,
+    "offsetMin": 10,
+    "route": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Équipe 7",
+    "colorName": "Rose",
+    "color": "#D7468C",
+    "onColor": "#FFFFFF",
+    "startCp": 2,
+    "offsetMin": 10,
+    "route": [
+      2,
+      3,
+      4,
+      5,
+      1
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Équipe 8",
+    "colorName": "Turquoise",
+    "color": "#009696",
+    "onColor": "#FFFFFF",
+    "startCp": 3,
+    "offsetMin": 10,
+    "route": [
+      3,
+      4,
+      5,
+      1,
+      2
+    ]
+  }
+]

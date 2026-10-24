@@ -1,0 +1,111 @@
+.map-layout {
+  flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) clamp(340px, 26vw, 430px);
+  gap: 22px; padding: 4px 28px 0; align-items: start;
+}
+
+/* The lit chart on the table */
+.map-panel { position: relative; }
+.map-panel::before {
+  content: ''; position: absolute; inset: 6% 4%; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(242, 227, 192, 0.22), transparent);
+  filter: blur(30px); z-index: -1;
+}
+.map { width: 100%; height: auto; display: block; filter: drop-shadow(0 28px 34px rgba(0, 0, 0, 0.6)); }
+
+.map-grid line { stroke: var(--ink); stroke-opacity: 0.06; stroke-width: 1; }
+.loop-path { fill: none; stroke: var(--signal); stroke-opacity: 0.55; stroke-width: 3; stroke-dasharray: 1 11; stroke-linecap: round; }
+.loop-arrowhead { fill: var(--signal); fill-opacity: 0.7; }
+.wave { fill: none; stroke: #3d6f78; stroke-opacity: 0.55; stroke-width: 2; }
+.harbour-label { font-family: var(--font-display); font-size: 26px; fill: var(--ink); }
+
+.compass { opacity: 0.5; }
+.compass-ring { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.compass-ring.thin { stroke-width: 0.7; }
+.compass-ink { fill: var(--ink); }
+.compass-paper { fill: var(--parchment); stroke: var(--ink); stroke-width: 0.5; }
+.compass-n { font-family: var(--font-display); font-size: 22px; fill: var(--ink); }
+
+/* Checkpoints: wax seals with a brass ring */
+.cp-glow { fill: var(--brass); opacity: 0.22; }
+.cp-disc { fill: var(--signal); stroke: var(--brass); stroke-width: 3.5; }
+.cp-ring { fill: none; stroke: var(--brass-light); stroke-width: 1; stroke-dasharray: 2 3; }
+.cp-label { font-family: var(--font-display); font-size: 22px; fill: var(--parchment); }
+.cp-count { font-family: var(--font-ui); font-weight: 700; font-size: 11px; fill: var(--brass-light); }
+
+/* Treasure */
+.chest-body { fill: #a8743c; stroke: #5a3a1a; stroke-width: 1.5; }
+.chest-lid { fill: #c69356; stroke: #5a3a1a; stroke-width: 1.5; }
+.chest-band { fill: var(--brass); stroke: var(--brass-dark); stroke-width: 0.8; }
+.chest-lock { fill: var(--brass-light); stroke: var(--brass-dark); }
+.chest-ray { stroke: var(--brass); stroke-width: 3; stroke-linecap: round; opacity: 0.85; }
+.treasure-title { font-family: var(--font-display); font-size: 28px; fill: var(--signal-dark); }
+.treasure-sub { font-family: var(--font-ui); font-style: italic; font-size: 16px; fill: var(--ink-soft); }
+.treasure:not(.found) .treasure-chest { opacity: 0.5; }
+.treasure-glow { fill: var(--brass-light); opacity: 0.55; animation: glow 2.4s ease-in-out infinite; }
+@keyframes glow { 50% { opacity: 0.2; } }
+
+/* Ships — the one moving thing on screen */
+.ship { transition: transform 2.2s cubic-bezier(0.45, 0, 0.25, 1); }
+.ship-rock { animation: rock 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: 50% 85%; }
+@keyframes rock { 0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); } }
+.ship-hull { fill: #5b371a; stroke: #2e1a0a; stroke-width: 1.2; }
+.ship-hull-line { stroke: #c69356; stroke-width: 1; }
+.ship-mast { stroke: #2e1a0a; stroke-width: 2.2; }
+.ship-sail { stroke: rgba(0, 0, 0, 0.4); stroke-width: 1; }
+.ship-number { font-family: var(--font-ui); font-weight: 800; font-size: 14px; }
+.ship-shadow { fill: #3d6f78; opacity: 0.35; }
+.splash { fill: none; stroke: #3d8fa4; stroke-width: 3; opacity: 0; animation: splash 1.4s ease-out 1.6s 1; }
+@keyframes splash { 0% { opacity: 0.9; r: 10; } 100% { opacity: 0; r: 46; } }
+
+/* ---------- Ship's log (ranking) ---------- */
+.log {
+  display: flex; flex-direction: column; gap: 10px; padding: 16px 18px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(180deg, rgba(18, 56, 77, 0.78), rgba(7, 26, 39, 0.82));
+  border: 1px solid rgba(95, 179, 179, 0.22); box-shadow: var(--lift);
+  backdrop-filter: blur(6px);
+}
+.log-head { display: flex; flex-direction: column; gap: 2px; }
+.log-head h2 { font-size: 30px; line-height: 1; color: var(--brass-light); }
+.log-hint { font-size: 13.5px; color: var(--text-soft); }
+
+.finalists {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  padding: 10px 12px; border-radius: var(--r-md);
+  background: linear-gradient(90deg, rgba(217, 164, 65, 0.24), rgba(217, 164, 65, 0.06));
+  border: 1px solid rgba(243, 211, 138, 0.55);
+}
+.finalists-label { font-family: var(--font-display); font-size: 21px; color: var(--brass-light); }
+.finalists-teams { display: flex; gap: 6px; }
+.finalist-chip { padding: 3px 10px; border-radius: 999px; font-weight: 800; font-size: 14px; }
+
+.log-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.log-row {
+  display: grid; grid-template-columns: 20px 32px 1fr auto; align-items: center; gap: 12px;
+  padding: 7px 4px 7px 6px; border-top: 1px solid rgba(159, 184, 189, 0.12);
+  position: relative;
+}
+.log-row:first-child { border-top: none; }
+.log-row::before {
+  content: ''; position: absolute; left: -18px; top: 10px; bottom: 10px; width: 4px; border-radius: 0 4px 4px 0;
+  background: var(--team);
+}
+.log-row.finalist { background: linear-gradient(90deg, rgba(217, 164, 65, 0.14), transparent 80%); border-radius: var(--r-sm); }
+.log-pos { font-weight: 800; font-size: 16px; color: var(--text-soft); text-align: center; }
+.log-flag {
+  display: grid; place-items: center; width: 32px; height: 32px; border-radius: 10px 10px 10px 2px;
+  font-weight: 800; font-size: 17px; box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2);
+}
+.log-main { min-width: 0; }
+.log-name { display: flex; align-items: baseline; gap: 8px; font-weight: 700; font-size: 18px; line-height: 1.15; color: var(--text); white-space: nowrap; }
+.log-badge { margin-left: auto; padding: 1px 8px; border-radius: 999px; font-size: 12.5px; font-weight: 700; color: var(--text); background: rgba(159, 184, 189, 0.22); }
+.log-badge.gold { color: var(--abyss); background: var(--brass); }
+.log-last { font-size: 13px; font-weight: 500; color: var(--text-soft); overflow: hidden; text-overflow: ellipsis; }
+.log-side { display: flex; flex-direction: column; align-items: flex-end; }
+.log-steps { font-weight: 800; font-size: 22px; line-height: 1; color: var(--text); }
+.log-steps small { font-size: 14px; font-weight: 500; color: var(--text-soft); }
+.log-time { font-size: 14px; color: var(--foam-soft); }
+
+@media (max-width: 1000px) {
+  .map-layout { grid-template-columns: 1fr; padding: 4px 14px 0; }
+}
