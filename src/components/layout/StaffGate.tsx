@@ -3,6 +3,7 @@ import { Link } from '../../lib/router';
 import { api } from '../../api';
 import { RateLimitError } from '../../api/staffSession';
 import { useStaff } from '../../hooks/useStaff';
+import { NavBar } from './NavBar';
 
 /** Shows its content only after the staff code has been accepted by the server. */
 export function StaffGate({ children }: { children: ReactNode }) {
@@ -11,7 +12,12 @@ export function StaffGate({ children }: { children: ReactNode }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  if (loading) return <div className="info">Vérification de la session…</div>;
+  if (loading) return (
+    <div className="page page-checkin">
+      <NavBar />
+      <main className="checkin-main"><div className="info">Vérification de la session…</div></main>
+    </div>
+  );
   if (unlocked) return <>{children}</>;
 
   async function submit(e: FormEvent) {
@@ -29,6 +35,7 @@ export function StaffGate({ children }: { children: ReactNode }) {
 
   return (
     <div className="page page-checkin">
+      <NavBar />
       <main className="checkin-main">
         <form className="card gate" onSubmit={submit}>
           <h2>Espace staff</h2>

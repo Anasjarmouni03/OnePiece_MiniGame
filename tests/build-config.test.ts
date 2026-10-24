@@ -4,7 +4,8 @@ import { test } from 'node:test';
 
 function prepare(values: Record<string, string>) {
   const env: NodeJS.ProcessEnv = { ...process.env, VERCEL: '1', NODE_ENV: 'production' };
-  for (const name of ['DATABASE_URL', 'DATABASE_URL_UNPOOLED', 'POSTGRES_URL', 'STAFF_PIN', 'TEAM_PINS', 'SESSION_SECRET']) delete env[name];
+  // Explicit empty values prevent Next's dotenv loader from importing local credentials.
+  for (const name of ['DATABASE_URL', 'DATABASE_URL_UNPOOLED', 'POSTGRES_URL', 'STAFF_PIN', 'TEAM_PINS', 'SESSION_SECRET']) env[name] = '';
   return spawnSync(process.execPath, ['scripts/prepare-build.mjs'], { env: { ...env, ...values }, encoding: 'utf8' });
 }
 

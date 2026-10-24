@@ -5,6 +5,7 @@ import { RateLimitError } from '../api/staffSession';
 import { Confetti } from '../components/common/Confetti';
 import { ProgressDots } from '../components/common/ProgressDots';
 import { Footer } from '../components/layout/Footer';
+import { NavBar } from '../components/layout/NavBar';
 import { TEAMS, TOTAL_CPS } from '../config/game';
 import { useGameState } from '../hooks/useGameState';
 import { useMyTeam } from '../hooks/useMyTeam';
@@ -33,6 +34,7 @@ export function CheckinPage() {
         <h1>Chasse au Trésor</h1>
         <Link to="/" className="link-quiet">Voir la carte en direct</Link>
       </header>
+      <NavBar />
       <main className="checkin-main">
         {loading ? <div className="info">Vérification de la session…</div> : team ? (
           <TeamCheckin
